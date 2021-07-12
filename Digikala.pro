@@ -11,17 +11,21 @@ CONFIG += c++11
 RESOURCES += qdarkstyle/style.qrc
 
 SOURCES += \
+    admin.cpp \
     main.cpp \
     digikala.cpp
 
 HEADERS += \
+    admin.h \
     digikala.h \
     product.h
 
 FORMS += \
+    admin.ui \
     digikala.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+

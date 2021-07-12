@@ -30,6 +30,7 @@ void Digikala::setStyleSheet()
         QTextStream ts(&f);
         qApp->setStyleSheet(ts.readAll());
     }
+
 }
 
 void Digikala::initialize()
