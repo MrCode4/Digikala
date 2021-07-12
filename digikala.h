@@ -17,5 +17,7 @@ public:
 
 private:
     Ui::Digikala *ui;
+    void setStyleSheet();
+    void initialize();
 };
 #endif // DIGIKALA_H
