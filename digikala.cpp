@@ -11,6 +11,9 @@ Digikala::Digikala(QWidget *parent)
     ui->setupUi(this);   
 
     initialize();
+
+    Admin* admin = new Admin();
+    admin->showFullScreen();
 }
 
 Digikala::~Digikala()
@@ -22,10 +25,12 @@ void Digikala::setStyleSheet()
 {
     QFile f(":/qdarkstyle/dark/style.qss");
 
-    if (!f.exists())   {
+    if (!f.exists())
+    {
         printf("Unable to set stylesheet, file not found\n");
     }
-    else   {
+    else
+    {
         f.open(QFile::ReadOnly | QFile::Text);
         QTextStream ts(&f);
         qApp->setStyleSheet(ts.readAll());

@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 
+#include "seller.h"
+#include "admin.h"
+#include "buyer.h"
+#include "product.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Digikala; }
 QT_END_NAMESPACE

@@ -12,17 +12,25 @@ RESOURCES += qdarkstyle/style.qrc
 
 SOURCES += \
     admin.cpp \
+    buyer.cpp \
+    itemlistmodel.cpp \
     main.cpp \
-    digikala.cpp
+    digikala.cpp \
+    seller.cpp
 
 HEADERS += \
     admin.h \
+    buyer.h \
     digikala.h \
-    product.h
+    itemlistmodel.h \
+    product.h \
+    seller.h
 
 FORMS += \
     admin.ui \
-    digikala.ui
+    buyer.ui \
+    digikala.ui \
+    seller.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
