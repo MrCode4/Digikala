@@ -3,20 +3,26 @@
 
 #include <QDialog>
 
+#include <product.h>
+
 namespace Ui {
-class productDialog;
+class ProductDialog;
 }
 
-class productDialog : public QDialog
+class ProductDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit productDialog(QWidget *parent = nullptr);
-    ~productDialog();
+    explicit ProductDialog(QWidget *parent = nullptr);
+
+    void insert_information(const Product& product);
+
+    ~ProductDialog();
 
 private:
-    Ui::productDialog *ui;
+    Ui::ProductDialog *ui;
+
 };
 
 #endif // PRODUCTDIALOG_H

@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     digikala.cpp \
     productdialog.cpp \
+    productlistmodel.cpp \
     seller.cpp
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     itemlistmodel.h \
     product.h \
     productdialog.h \
+    productlistmodel.h \
     seller.h
 
 FORMS += \

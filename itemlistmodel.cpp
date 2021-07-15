@@ -71,6 +71,11 @@ void ItemListModel::addProduct(Product& product)
     endInsertRows();
 }
 
+void ItemListModel::deleteProduct(const Product& product)
+{
+
+}
+
 int ItemListModel::getProductListSize()
 {
     return productList.size();

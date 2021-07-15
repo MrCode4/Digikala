@@ -37,6 +37,38 @@ Admin::Admin(QWidget *parent) :
 
 }
 
+void Admin::show_productDialog(const Product& product)
+{
+    if(productDialog == nullptr)
+        productDialog = new ProductDialog(this);
+
+    productDialog->insert_information(product);
+
+    productDialog->exec();
+}
+
+void Admin::add_to_productList(const Product& product)
+{
+    bool isExist = false;
+
+    for(const auto &p : qAsConst(productList))
+    {
+        if(p.getName() == product.getName())
+        {
+            isExist = true;
+
+            break;
+        }
+    }
+
+    if(!isExist)
+    {
+     //TODO: add to product table
+    }
+
+}
+
+
 void Admin::add_new_submiting_product(Product &product)
 {
     submiting_list.submitingListModel->addProduct(product);
@@ -45,17 +77,34 @@ void Admin::add_new_submiting_product(Product &product)
     detail_btn->setText("more details");
     submiting_list.detail_btn_list.append(detail_btn);
 
+    connect(detail_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        show_productDialog(product);
+    });
+
     QPushButton *confirm_btn = new QPushButton();
     confirm_btn->setText("confirm");
     confirm_btn->setStyleSheet("background-color: rgb(0, 99, 0);"
                                "color: rgb(255, 255, 255);");
     submiting_list.confirm_btn_list.append(confirm_btn);
 
+    connect(confirm_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        add_to_productList(product);
+
+        this->submiting_list.submitingListModel->deleteProduct(product);
+    });
+
     QPushButton *decline_btn = new QPushButton();
     decline_btn->setText("decline");
     decline_btn->setStyleSheet("background-color: rgb(143, 0, 0);"
                                "color: rgb(255, 255, 255);");
     submiting_list.decline_btn_list.append(decline_btn);
+
+    connect(decline_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        this->submiting_list.submitingListModel->deleteProduct(product);
+    });
 
     ui->submiting_tableView->setIndexWidget(submiting_list.submitingListModel->index(submiting_list.submitingListModel->getProductListSize()-1,1,QModelIndex()), detail_btn);
     ui->submiting_tableView->setIndexWidget(submiting_list.submitingListModel->index(submiting_list.submitingListModel->getProductListSize()-1,2,QModelIndex()), confirm_btn);

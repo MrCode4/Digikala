@@ -12,7 +12,9 @@ class Product
 public:
     Product()
     {
-
+        price = 0;
+        count = 0;
+        rate = 0.0;
     }
 
 
@@ -22,8 +24,8 @@ public:
     int getPrice() const;
     void setPrice(int newPrice);
 
-    const QString &getCount() const;
-    void setCount(const QString &newCount);
+    const int &getCount() const;
+    void setCount(const int &newCount);
 
     const QString &getDescription() const;
     void setDescription(const QString &newDescription);
@@ -37,7 +39,7 @@ public:
 private:
     QString name;
     int price;
-    QString count;
+    int count;
     QString description;
     double rate;
     QString comments;
@@ -63,12 +65,12 @@ inline void Product::setPrice(int newPrice)
     price = newPrice;
 }
 
-inline const QString &Product::getCount() const
+inline const int &Product::getCount() const
 {
     return count;
 }
 
-inline void Product::setCount(const QString &newCount)
+inline void Product::setCount(const int &newCount)
 {
     count = newCount;
 }

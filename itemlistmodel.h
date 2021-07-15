@@ -26,6 +26,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
     void addProduct(Product& product);
+    void deleteProduct(const Product &product);
 
     int getProductListSize();
 
