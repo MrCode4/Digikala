@@ -16,6 +16,7 @@ SOURCES += \
     itemlistmodel.cpp \
     main.cpp \
     digikala.cpp \
+    productdialog.cpp \
     seller.cpp
 
 HEADERS += \
@@ -24,12 +25,14 @@ HEADERS += \
     digikala.h \
     itemlistmodel.h \
     product.h \
+    productdialog.h \
     seller.h
 
 FORMS += \
     admin.ui \
     buyer.ui \
     digikala.ui \
+    productdialog.ui \
     seller.ui
 
 # Default rules for deployment.

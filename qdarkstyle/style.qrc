@@ -215,5 +215,8 @@
     </qresource>
     <qresource prefix="/">
         <file>../images/digikala-logo.png</file>
+        <file>../images/confirm.jpg</file>
+        <file>../images/decline.svg</file>
+        <file>../images/2175282.png</file>
     </qresource>
 </RCC>

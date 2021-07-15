@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 
+#include "product.h"
+#include "itemlistmodel.h"
+#include <QVBoxLayout>
+#include <QTableView>
+#include <QPushButton>
+
 namespace Ui {
 class Admin;
 }
@@ -16,7 +22,40 @@ public:
     ~Admin();
 
 private:
+    struct Submiting_list
+    {
+        QList<QPushButton*> detail_btn_list;
+        QList<QPushButton*> confirm_btn_list;
+        QList<QPushButton*> decline_btn_list;
+
+        ItemListModel* submitingListModel;
+    }submiting_list;
+
+    struct Canceling_list
+    {
+        QList<QPushButton*> detail_btn_list;
+        QList<QPushButton*> confirm_btn_list;
+        QList<QPushButton*> decline_btn_list;
+
+        ItemListModel* cancelingListModel;
+    }canceling_list;
+
+    struct Buying_list
+    {
+        QList<QPushButton*> detail_btn_list;
+        QList<QPushButton*> confirm_btn_list;
+        QList<QPushButton*> decline_btn_list;
+
+        ItemListModel* buyingListModel;
+    }buying_list;
+
     Ui::Admin *ui;
+    Product p2,p1,p3,p4,p5,p6;
+
+    void add_new_submiting_product(Product& product);
+    void add_new_canceling_product(Product& product);
+    void add_new_buying_product(Product& product);
+
 };
 
 #endif // ADMIN_H

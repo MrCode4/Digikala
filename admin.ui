@@ -18,7 +18,57 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>22</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Product List</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTableView" name="product_tableView"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
    <property name="enabled">
@@ -69,12 +119,15 @@
    <widget class="QWidget" name="pending_submiting_products_contents">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QTableView" name="tableView">
+      <widget class="QTableView" name="submiting_tableView">
        <property name="sizeAdjustPolicy">
         <enum>QAbstractScrollArea::AdjustToContents</enum>
        </property>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="textElideMode">
+        <enum>Qt::ElideMiddle</enum>
        </property>
       </widget>
      </item>
@@ -84,23 +137,29 @@
   <widget class="QDockWidget" name="dockWidget_3">
    <property name="minimumSize">
     <size>
-     <width>300</width>
-     <height>50</height>
+     <width>450</width>
+     <height>137</height>
     </size>
    </property>
    <property name="windowTitle">
-    <string>Pending Buting Products</string>
+    <string>Pending Buying Products</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="pending_buying_products_contents"/>
+   <widget class="QWidget" name="pending_buying_products_contents">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QTableView" name="buying_tableView"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QDockWidget" name="dockWidget_2">
    <property name="minimumSize">
     <size>
      <width>200</width>
-     <height>50</height>
+     <height>137</height>
     </size>
    </property>
    <property name="windowTitle">
@@ -109,13 +168,19 @@
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="pending_canceling_products_contents"/>
+   <widget class="QWidget" name="pending_canceling_products_contents">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTableView" name="cancel_tableView"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QDockWidget" name="dockWidget_4">
    <property name="minimumSize">
     <size>
      <width>200</width>
-     <height>50</height>
+     <height>137</height>
     </size>
    </property>
    <property name="windowTitle">
@@ -124,7 +189,13 @@
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="average_sellers_rate_contents"/>
+   <widget class="QWidget" name="average_sellers_rate_contents">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QTableView" name="rate_tableView"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <action name="actionAdmin_Page">
    <property name="enabled">

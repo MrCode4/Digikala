@@ -3,8 +3,10 @@
 #include <QHeaderView>
 
 ItemListModel::ItemListModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractListModel(parent),
+      header{"Product Name", "Details", "Confirm", "Decline"}
 {
+
 }
 
 QVariant ItemListModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -12,24 +14,19 @@ QVariant ItemListModel::headerData(int section, Qt::Orientation orientation, int
 
     if(role == Qt::DisplayRole)
     {
-        QStringList header;
         if(orientation == Qt::Orientation::Horizontal)
         {
-            switch (section)
+            if(section < header.size())
             {
-            case 0:
-                return "Product Name";
-            case 1:
-                return "Confirm";
-            case 2:
-                return "Decline";
+                return header[section];
             }
+            else
+                return QVariant();
         }
         else
         {
             return QString::number(section);
         }
-        return header;
     }
 
     return QVariant();
@@ -39,19 +36,47 @@ QVariant ItemListModel::headerData(int section, Qt::Orientation orientation, int
 
 int ItemListModel::rowCount(const QModelIndex &parent) const
 {
-    // For list models only the root node (an invalid parent) should return the list's size. For all
-    // other (valid) parents, rowCount() should return 0 so that it does not become a tree model.
-    if (parent.isValid())
-        return 0;
+    return productList.size();
+}
 
-    // FIXME: Implement me!
+int ItemListModel::columnCount(const QModelIndex &parent) const
+{
+    return header.size();
 }
 
 QVariant ItemListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (!index.isValid() || index.row() >= productList.size())
         return QVariant();
 
-    // FIXME: Implement me!
+    if(role == Qt::DisplayRole)
+    {
+        if(index.column() == 0 && index.row() < productList.size())
+        {
+            return productList[index.row()].getName();
+        }
+
+    }
+
     return QVariant();
+}
+
+
+void ItemListModel::addProduct(Product& product)
+{
+    beginInsertRows(QModelIndex(), productList.size(), productList.size());
+
+    productList.append(product);
+
+    endInsertRows();
+}
+
+int ItemListModel::getProductListSize()
+{
+    return productList.size();
+}
+
+int ItemListModel::getHeaderSize()
+{
+    return header.size();
 }
