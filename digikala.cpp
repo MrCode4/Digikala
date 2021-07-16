@@ -55,8 +55,6 @@ void Digikala::on_actionExit_triggered()
 
 void Digikala::requestLogin()
 {
-    qDebug()<<"vared";
-
     QList<Global::Admin> adminList = GlobalSettings::getInstance()->getAdmins();
 
     bool isItExist = false;
@@ -77,6 +75,8 @@ void Digikala::requestLogin()
     {
         admin = new Admin(this, adminUser);
         admin->showFullScreen();
+
+        connect(admin,SIGNAL(closed()),this,SLOT(adminClosed()));
 
         return;
     }
@@ -99,6 +99,8 @@ void Digikala::requestLogin()
         seller = new Seller(this, sellerUser);
         seller->showFullScreen();
 
+        connect(seller,SIGNAL(closed()),this,SLOT(sellerClosed()));
+
         return;
     }
 
@@ -120,6 +122,8 @@ void Digikala::requestLogin()
         buyer = new Buyer(this, buyerUser);
         buyer->showFullScreen();
 
+        connect(buyer,SIGNAL(closed()),this,SLOT(buyerClosed()));
+
         return;
     }
 
@@ -127,8 +131,58 @@ void Digikala::requestLogin()
 
 }
 
+void Digikala::signUpPageClosed()
+{
+    this->show();
+
+    signUpPage->close();
+
+    delete signUpPage;
+
+    signUpPage = nullptr;
+}
+
+void Digikala::adminClosed()
+{
+    this->show();
+
+    admin->close();
+
+    delete admin;
+
+    admin = nullptr;
+}
+
+void Digikala::buyerClosed()
+{
+    this->show();
+
+    buyer->close();
+
+    delete buyer;
+
+    buyer = nullptr;
+}
+
+void Digikala::sellerClosed()
+{
+    this->show();
+
+    seller->close();
+
+    delete seller;
+
+    seller = nullptr;
+}
+
 void Digikala::signup()
 {
+    signUpPage = new SignUpPage();
 
+    signUpPage->showFullScreen();
+
+    connect(signUpPage, SIGNAL(closed()), this, SLOT(signUpPageClosed()));
+
+    this->hide();
 }
 

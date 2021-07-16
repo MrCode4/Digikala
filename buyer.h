@@ -16,6 +16,12 @@ public:
     explicit Buyer(QWidget *parent = nullptr, Global::Buyer buyer = Global::Buyer());
     ~Buyer();
 
+private slots:
+    void on_actionLogout_triggered();
+
+signals:
+    void closed();
+
 private:
     Ui::Buyer *ui;
 };

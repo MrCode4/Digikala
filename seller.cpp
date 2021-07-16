@@ -12,3 +12,9 @@ Seller::~Seller()
 {
     delete ui;
 }
+
+void Seller::on_actionLogout_triggered()
+{
+    emit closed();
+}
+

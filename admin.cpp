@@ -185,3 +185,9 @@ Admin::~Admin()
 {
     delete ui;
 }
+
+void Admin::on_actionLogout_triggered()
+{
+    emit closed();
+}
+

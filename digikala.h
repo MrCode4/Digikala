@@ -7,6 +7,7 @@
 #include "admin.h"
 #include "buyer.h"
 #include "product.h"
+#include "signuppage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Digikala; }
@@ -25,6 +26,11 @@ private slots:
     void requestLogin();
     void signup();
 
+    void signUpPageClosed();
+    void adminClosed();
+    void buyerClosed();
+    void sellerClosed();
+
 private:
     Ui::Digikala *ui;
     void setStyleSheet();
@@ -32,5 +38,6 @@ private:
     Admin* admin = nullptr;
     Buyer* buyer = nullptr;
     Seller* seller = nullptr;
+    SignUpPage* signUpPage = nullptr;
 };
 #endif // DIGIKALA_H

@@ -25,6 +25,10 @@ public:
     ~Admin();
 
 private slots:
+    void on_actionLogout_triggered();
+
+signals:
+    void closed();
 
 private:
     struct Submiting_list
