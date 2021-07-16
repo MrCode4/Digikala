@@ -217,5 +217,12 @@
         <file>../images/digikala-logo.png</file>
         <file>../images/confirm.jpg</file>
         <file>../images/decline.svg</file>
+        <file>../images/wallet.png</file>
+        <file>../images/profile.png</file>
+        <file>../images/delete.png</file>
+        <file>../images/discount.png</file>
+        <file>../images/product.png</file>
+        <file>../images/logout.png</file>
+        <file>../images/add.png</file>
     </qresource>
 </RCC>

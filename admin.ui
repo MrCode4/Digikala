@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
+    <width>1133</width>
     <height>685</height>
    </rect>
   </property>
@@ -18,54 +18,185 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonTextBesideIcon</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>0</number>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="qdarkstyle/style.qrc">:/images/product.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Product List</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="qdarkstyle/style.qrc">:/images/product.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label">
-        <property name="font">
-         <font>
-          <pointsize>22</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Product List</string>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Add</string>
+          </property>
+          <property name="icon">
+           <iconset resource="qdarkstyle/style.qrc">
+            <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="font">
+           <font>
+            <pointsize>18</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+          <property name="icon">
+           <iconset resource="qdarkstyle/style.qrc">
+            <normaloff>:/images/delete.png</normaloff>:/images/delete.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTableView" name="product_tableView">
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustToContents</enum>
         </property>
        </widget>
       </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QTableView" name="product_tableView"/>
     </item>
    </layout>
   </widget>
@@ -77,12 +208,12 @@
    <property name="minimumSize">
     <size>
      <width>0</width>
-     <height>40</height>
+     <height>100</height>
     </size>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="windowTitle">
@@ -90,6 +221,12 @@
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
    </property>
    <property name="floatable">
     <bool>false</bool>
@@ -102,13 +239,21 @@
    </attribute>
    <addaction name="actionAdmin_Page"/>
    <addaction name="actionLogout"/>
+   <addaction name="separator"/>
+   <addaction name="actionProfile"/>
+   <addaction name="actionWallet"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget1">
    <property name="minimumSize">
     <size>
      <width>350</width>
-     <height>137</height>
+     <height>181</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
    </property>
    <property name="windowTitle">
     <string>Pending Submiting Products</string>
@@ -138,8 +283,13 @@
    <property name="minimumSize">
     <size>
      <width>450</width>
-     <height>137</height>
+     <height>145</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
    </property>
    <property name="windowTitle">
     <string>Pending Buying Products</string>
@@ -150,7 +300,11 @@
    <widget class="QWidget" name="pending_buying_products_contents">
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QTableView" name="buying_tableView"/>
+      <widget class="QTableView" name="buying_tableView">
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustToContents</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -159,11 +313,16 @@
    <property name="minimumSize">
     <size>
      <width>200</width>
-     <height>137</height>
+     <height>145</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
    <property name="windowTitle">
-    <string>Pending Cancel Products</string>
+    <string>Pending Canceling Products</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -171,7 +330,11 @@
    <widget class="QWidget" name="pending_canceling_products_contents">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QTableView" name="cancel_tableView"/>
+      <widget class="QTableView" name="cancel_tableView">
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustToContents</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -180,8 +343,13 @@
    <property name="minimumSize">
     <size>
      <width>200</width>
-     <height>137</height>
+     <height>145</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
    </property>
    <property name="windowTitle">
     <string>Sellers rate</string>
@@ -192,7 +360,11 @@
    <widget class="QWidget" name="average_sellers_rate_contents">
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
-      <widget class="QTableView" name="rate_tableView"/>
+      <widget class="QTableView" name="rate_tableView">
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustToContents</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -207,16 +379,63 @@
    <property name="toolTip">
     <string>Admin Page</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionLogout">
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="qdarkstyle/style.qrc">
+     <normaloff>:/images/logout.png</normaloff>:/images/logout.png</iconset>
+   </property>
    <property name="text">
     <string>Logout</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionWallet">
+   <property name="icon">
+    <iconset resource="qdarkstyle/style.qrc">
+     <normaloff>:/images/wallet.png</normaloff>:/images/wallet.png</iconset>
+   </property>
+   <property name="text">
+    <string>Wallet</string>
+   </property>
+   <property name="toolTip">
+    <string>wallet</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionProfile">
+   <property name="icon">
+    <iconset resource="qdarkstyle/style.qrc">
+     <normaloff>:/images/profile.png</normaloff>:/images/profile.png</iconset>
+   </property>
+   <property name="text">
+    <string>Profile</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="qdarkstyle/style.qrc"/>
+ </resources>
  <connections/>
 </ui>

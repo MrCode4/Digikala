@@ -6,7 +6,7 @@
 
 #include "product.h"
 
-#include <QAbstractItemModel>
+
 
 class ItemListModel : public QAbstractListModel
 {

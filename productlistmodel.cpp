@@ -1,46 +1,120 @@
 #include "productlistmodel.h"
+#include <QDebug>
 
 ProductListModel::ProductListModel(QObject *parent)
-    : QAbstractItemModel(parent)
+    : QAbstractListModel(parent),
+    header{"Product Name", "Price", "Count", "Description", "Rate", "Comments"}
 {
 }
 
 QVariant ProductListModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    // FIXME: Implement me!
-}
+    if(role == Qt::DisplayRole)
+    {
+        if(orientation == Qt::Orientation::Horizontal)
+        {
+            if(section < header.size())
+            {
+                return header[section];
+            }
+            else
+                return QVariant();
+        }
+        else
+        {
+            return QString::number(section+1);
+        }
+    }
 
-QModelIndex ProductListModel::index(int row, int column, const QModelIndex &parent) const
-{
-    // FIXME: Implement me!
-}
+    return QVariant();
 
-QModelIndex ProductListModel::parent(const QModelIndex &index) const
-{
-    // FIXME: Implement me!
 }
 
 int ProductListModel::rowCount(const QModelIndex &parent) const
 {
-    if (!parent.isValid())
-        return 0;
-
-    // FIXME: Implement me!
+     return productList.size();
 }
 
 int ProductListModel::columnCount(const QModelIndex &parent) const
 {
-    if (!parent.isValid())
-        return 0;
-
-    // FIXME: Implement me!
+    return header.size();
 }
 
 QVariant ProductListModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    if (!index.isValid() || index.row() >= productList.size())
         return QVariant();
 
-    // FIXME: Implement me!
+    if(role == Qt::DisplayRole)
+    {
+        if(index.column() == 0)//Name
+        {
+            return productList[index.row()].getName();
+        }
+        else if(index.column() == 1)//Price
+        {
+            return productList[index.row()].getPrice();
+        }
+        else if(index.column() == 2)//Count
+        {
+            return productList[index.row()].getCount();
+        }
+        else if(index.column() == 3)//Description
+        {
+            return productList[index.row()].getDescription();
+        }
+    }
+
     return QVariant();
+}
+
+void ProductListModel::addProduct(const Product& product)
+{
+    bool isExist = false;
+
+    for(const auto &p : qAsConst(productList))
+    {
+        if(p.getName() == product.getName())
+        {
+            isExist = true;
+
+            break;
+        }
+    }
+
+    if(!isExist)
+    {
+        beginInsertRows(QModelIndex(), productList.size(), productList.size());
+
+        productList.append(product);
+
+        endInsertRows();
+    }
+}
+
+void ProductListModel::deleteProduct(const Product& product)
+{
+    for(int i = 0 ; i < productList.size() ; i++)
+    {
+        if(productList[i].getName() == product.getName())
+        {
+            beginRemoveRows(QModelIndex(), i, i);
+
+            productList.removeAt(i);
+
+            endRemoveRows();
+
+            return;
+        }
+    }
+}
+
+int ProductListModel::getProductListSize()
+{
+    return productList.size();
+}
+
+int ProductListModel::getHeaderSize()
+{
+    return header.size();
 }

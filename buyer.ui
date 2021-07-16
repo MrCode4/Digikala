@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>buyer</class>
- <widget class="QMainWindow" name="buyer">
+ <class>Buyer</class>
+ <widget class="QMainWindow" name="Buyer">
   <property name="geometry">
    <rect>
     <x>0</x>

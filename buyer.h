@@ -4,19 +4,19 @@
 #include <QMainWindow>
 
 namespace Ui {
-class buyer;
+class Buyer;
 }
 
-class buyer : public QMainWindow
+class Buyer : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit buyer(QWidget *parent = nullptr);
-    ~buyer();
+    explicit Buyer(QWidget *parent = nullptr);
+    ~Buyer();
 
 private:
-    Ui::buyer *ui;
+    Ui::Buyer *ui;
 };
 
 #endif // BUYER_H

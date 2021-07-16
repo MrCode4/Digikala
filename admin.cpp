@@ -12,10 +12,12 @@ Admin::Admin(QWidget *parent) :
     submiting_list.submitingListModel = new ItemListModel(this);
     canceling_list.cancelingListModel = new ItemListModel(this);
     buying_list.buyingListModel = new ItemListModel(this);
+    productListModel = new ProductListModel(this);
 
     ui->submiting_tableView->setModel(submiting_list.submitingListModel);
     ui->cancel_tableView->setModel(canceling_list.cancelingListModel);
     ui->buying_tableView->setModel(buying_list.buyingListModel);
+    ui->product_tableView->setModel(productListModel);
 
     p1.setName("hassan");
     p2.setName("hosian");
@@ -25,6 +27,8 @@ Admin::Admin(QWidget *parent) :
 
     p5.setName("ghasem");
     p6.setName("mohsen");
+
+    productListModel->addProduct(p6);
 
     add_new_submiting_product(p1);
     add_new_submiting_product(p2);
@@ -45,27 +49,6 @@ void Admin::show_productDialog(const Product& product)
     productDialog->insert_information(product);
 
     productDialog->exec();
-}
-
-void Admin::add_to_productList(const Product& product)
-{
-    bool isExist = false;
-
-    for(const auto &p : qAsConst(productList))
-    {
-        if(p.getName() == product.getName())
-        {
-            isExist = true;
-
-            break;
-        }
-    }
-
-    if(!isExist)
-    {
-     //TODO: add to product table
-    }
-
 }
 
 
@@ -90,7 +73,7 @@ void Admin::add_new_submiting_product(Product &product)
 
     connect(confirm_btn, &QPushButton::clicked, this, [this,product]()
     {
-        add_to_productList(product);
+        productListModel->addProduct(product);
 
         this->submiting_list.submitingListModel->deleteProduct(product);
     });
@@ -120,17 +103,34 @@ void Admin::add_new_canceling_product(Product &product)
     detail_btn->setText("more details");
     canceling_list.detail_btn_list.append(detail_btn);
 
+    connect(detail_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        show_productDialog(product);
+    });
+
     QPushButton *confirm_btn = new QPushButton();
     confirm_btn->setText("confirm");
     confirm_btn->setStyleSheet("background-color: rgb(0, 99, 0);"
                                "color: rgb(255, 255, 255);");
     canceling_list.confirm_btn_list.append(confirm_btn);
 
+    connect(confirm_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        //TODO::product canceling accepted
+
+        this->canceling_list.cancelingListModel->deleteProduct(product);
+    });
+
     QPushButton *decline_btn = new QPushButton();
     decline_btn->setText("decline");
     decline_btn->setStyleSheet("background-color: rgb(143, 0, 0);"
                                "color: rgb(255, 255, 255);");
     canceling_list.decline_btn_list.append(decline_btn);
+
+    connect(decline_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        this->canceling_list.cancelingListModel->deleteProduct(product);
+    });
 
     ui->cancel_tableView->setIndexWidget(canceling_list.cancelingListModel->index(canceling_list.cancelingListModel->getProductListSize()-1,1,QModelIndex()), detail_btn);
     ui->cancel_tableView->setIndexWidget(canceling_list.cancelingListModel->index(canceling_list.cancelingListModel->getProductListSize()-1,2,QModelIndex()), confirm_btn);
@@ -146,17 +146,34 @@ void Admin::add_new_buying_product(Product &product)
     detail_btn->setText("more details");
     buying_list.detail_btn_list.append(detail_btn);
 
+    connect(detail_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        show_productDialog(product);
+    });
+
     QPushButton *confirm_btn = new QPushButton();
     confirm_btn->setText("confirm");
     confirm_btn->setStyleSheet("background-color: rgb(0, 99, 0);"
                                "color: rgb(255, 255, 255);");
     buying_list.confirm_btn_list.append(confirm_btn);
 
+    connect(confirm_btn, &QPushButton::clicked, this, [this,product]()
+    {
+      //TODO::buing product accepted
+
+        this->buying_list.buyingListModel->deleteProduct(product);
+    });
+
     QPushButton *decline_btn = new QPushButton();
     decline_btn->setText("decline");
     decline_btn->setStyleSheet("background-color: rgb(143, 0, 0);"
                                "color: rgb(255, 255, 255);");
     buying_list.decline_btn_list.append(decline_btn);
+
+    connect(decline_btn, &QPushButton::clicked, this, [this,product]()
+    {
+        this->buying_list.buyingListModel->deleteProduct(product);
+    });
 
     ui->buying_tableView->setIndexWidget(buying_list.buyingListModel->index(buying_list.buyingListModel->getProductListSize()-1,1,QModelIndex()), detail_btn);
     ui->buying_tableView->setIndexWidget(buying_list.buyingListModel->index(buying_list.buyingListModel->getProductListSize()-1,2,QModelIndex()), confirm_btn);

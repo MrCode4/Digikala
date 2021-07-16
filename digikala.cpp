@@ -1,4 +1,4 @@
-    #include <QFile>
+#include <QFile>
 #include <QTextStream>
 
 #include "digikala.h"
@@ -14,6 +14,12 @@ Digikala::Digikala(QWidget *parent)
 
     Admin* admin = new Admin();
     admin->showFullScreen();
+
+    Seller* seller = new Seller();
+    seller->showFullScreen();
+
+    Buyer* buyer = new Buyer();
+    buyer->showFullScreen();
 }
 
 Digikala::~Digikala()

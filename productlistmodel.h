@@ -1,9 +1,12 @@
 #ifndef PRODUCTLISTMODEL_H
 #define PRODUCTLISTMODEL_H
 
-#include <QAbstractItemModel>
+#include <QAbstractListModel>
+#include <QList>
 
-class ProductListModel : public QAbstractItemModel
+#include "product.h"
+
+class ProductListModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -14,16 +17,23 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
     // Basic functionality:
-    QModelIndex index(int row, int column,
-                      const QModelIndex &parent = QModelIndex()) const override;
-    QModelIndex parent(const QModelIndex &index) const override;
-
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;    
+
+    void addProduct(const Product &product);
+    void deleteProduct(const Product &product);
+
+    int getProductListSize();
+
+    int getHeaderSize();
 
 private:
+    QList<Product> productList;
+
+    QStringList header;
 };
 
 #endif // PRODUCTLISTMODEL_H

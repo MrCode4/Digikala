@@ -25,7 +25,7 @@ QVariant ItemListModel::headerData(int section, Qt::Orientation orientation, int
         }
         else
         {
-            return QString::number(section);
+            return QString::number(section+1);
         }
     }
 
@@ -51,7 +51,7 @@ QVariant ItemListModel::data(const QModelIndex &index, int role) const
 
     if(role == Qt::DisplayRole)
     {
-        if(index.column() == 0 && index.row() < productList.size())
+        if(index.column() == 0)
         {
             return productList[index.row()].getName();
         }
@@ -73,7 +73,19 @@ void ItemListModel::addProduct(Product& product)
 
 void ItemListModel::deleteProduct(const Product& product)
 {
+    for(int i = 0 ; i < productList.size() ; i++)
+    {
+        if(productList[i].getName() == product.getName())
+        {
+            beginRemoveRows(QModelIndex(), i, i);
 
+            productList.removeAt(i);
+
+            endRemoveRows();
+
+            return;
+        }
+    }
 }
 
 int ItemListModel::getProductListSize()

@@ -9,6 +9,7 @@
 #include "product.h"
 #include "itemlistmodel.h"
 #include "productdialog.h"
+#include "productlistmodel.h"
 
 namespace Ui {
 class Admin;
@@ -53,18 +54,18 @@ private:
     }buying_list;
 
     Ui::Admin *ui;
+
     Product p2,p1,p3,p4,p5,p6;
+
     ProductDialog* productDialog  = nullptr;
 
-    QList<Product> productList;
+    ProductListModel* productListModel;
 
     void add_new_submiting_product(Product& product);
     void add_new_canceling_product(Product& product);
     void add_new_buying_product(Product& product);
 
     void show_productDialog(const Product &product);
-
-    void add_to_productList(const Product &product);
 
 };
 
