@@ -11,9 +11,9 @@ CONFIG += c++11
 RESOURCES += qdarkstyle/style.qrc
 
 SOURCES += \
-    GlobalSettings.cpp \
     admin.cpp \
     buyer.cpp \
+    globalsettings.cpp \
     itemlistmodel.cpp \
     main.cpp \
     digikala.cpp \
@@ -25,6 +25,7 @@ HEADERS += \
     admin.h \
     buyer.h \
     digikala.h \
+    globalsettings.h \
     itemlistmodel.h \
     product.h \
     productdialog.h \

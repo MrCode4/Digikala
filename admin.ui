@@ -241,7 +241,6 @@
    <addaction name="actionLogout"/>
    <addaction name="separator"/>
    <addaction name="actionProfile"/>
-   <addaction name="actionWallet"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget1">
    <property name="minimumSize">
@@ -395,23 +394,6 @@
    </property>
    <property name="text">
     <string>Logout</string>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-  </action>
-  <action name="actionWallet">
-   <property name="icon">
-    <iconset resource="qdarkstyle/style.qrc">
-     <normaloff>:/images/wallet.png</normaloff>:/images/wallet.png</iconset>
-   </property>
-   <property name="text">
-    <string>Wallet</string>
-   </property>
-   <property name="toolTip">
-    <string>wallet</string>
    </property>
    <property name="font">
     <font>

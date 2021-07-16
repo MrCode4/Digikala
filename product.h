@@ -3,6 +3,8 @@
 
 #include <QString>
 
+
+
 /*!
  * \brief The Product class
  * It contain all feilds about product
@@ -17,6 +19,18 @@ public:
         rate = 0.0;
     }
 
+    enum Status : int
+    {
+        BOUGHT = 0,
+        BUYING,
+
+        CANCELED,
+        CANCELING,
+
+        ACCEPTED,
+        DECLINED,
+        PENDING,
+    };
 
     const QString &getName() const;
     void setName(const QString &newName);
@@ -36,13 +50,20 @@ public:
     const QString &getComments() const;
     void setComments(const QString &newComments);
 
+    Status getStatus() const;
+    void setStatus(Status newStatus);
+
 private:
     QString name;
+    QString description;
+    QString comments;
+
     int price;
     int count;
-    QString description;
+
     double rate;
-    QString comments;
+
+    Status status;
 };
 
 inline const QString &Product::getName() const
@@ -103,6 +124,16 @@ inline const QString &Product::getComments() const
 inline void Product::setComments(const QString &newComments)
 {
     comments = newComments;
+}
+
+inline Product::Status Product::getStatus() const
+{
+    return status;
+}
+
+inline void Product::setStatus(Product::Status newStatus)
+{
+    status = newStatus;
 }
 
 

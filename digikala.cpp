@@ -1,6 +1,7 @@
 #include <QFile>
 #include <QTextStream>
 
+#include "globalsettings.h"
 #include "digikala.h"
 #include "ui_digikala.h"
 
@@ -9,6 +10,8 @@ Digikala::Digikala(QWidget *parent)
     , ui(new Ui::Digikala)
 {
     ui->setupUi(this);   
+
+    GlobalSettings* global = GlobalSettings::getInstance();
 
     initialize();
 
