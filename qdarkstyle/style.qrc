@@ -224,5 +224,7 @@
         <file>../images/product.png</file>
         <file>../images/logout.png</file>
         <file>../images/add.png</file>
+        <file>../images/search_product.png</file>
+        <file>../images/buy_product.png</file>
     </qresource>
 </RCC>

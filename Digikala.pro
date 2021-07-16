@@ -11,6 +11,7 @@ CONFIG += c++11
 RESOURCES += qdarkstyle/style.qrc
 
 SOURCES += \
+    GlobalSettings.cpp \
     admin.cpp \
     buyer.cpp \
     itemlistmodel.cpp \
