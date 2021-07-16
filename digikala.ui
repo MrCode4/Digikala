@@ -181,7 +181,7 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
-               <widget class="QLineEdit" name="lineEdit">
+               <widget class="QLineEdit" name="username_lineEdit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -202,7 +202,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2">
+               <widget class="QLineEdit" name="passowrd_lineEdit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -220,8 +220,14 @@
                   <pointsize>14</pointsize>
                  </font>
                 </property>
+                <property name="inputMethodHints">
+                 <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+                </property>
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
+                </property>
                 <property name="readOnly">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -235,7 +241,7 @@
              <number>5</number>
             </property>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="login_btn">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -259,7 +265,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="signup_btn">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -385,19 +391,89 @@
    </attribute>
    <addaction name="actionExit"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+  </widget>
   <action name="actionLogin_Page">
    <property name="text">
     <string>Login Page</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="qdarkstyle/style.qrc">
+     <normaloff>:/images/exit.png</normaloff>:/images/exit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>username_lineEdit</tabstop>
+  <tabstop>passowrd_lineEdit</tabstop>
+  <tabstop>login_btn</tabstop>
+  <tabstop>signup_btn</tabstop>
+ </tabstops>
  <resources>
   <include location="qdarkstyle/style.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>login_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>Digikala</receiver>
+   <slot>requestLogin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>876</x>
+     <y>642</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>831</x>
+     <y>737</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>signup_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>Digikala</receiver>
+   <slot>signup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1028</x>
+     <y>647</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>981</x>
+     <y>790</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>requestLogin()</slot>
+  <slot>signup()</slot>
+ </slots>
 </ui>

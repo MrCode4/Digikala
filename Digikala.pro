@@ -19,7 +19,8 @@ SOURCES += \
     digikala.cpp \
     productdialog.cpp \
     productlistmodel.cpp \
-    seller.cpp
+    seller.cpp \
+    signuppage.cpp
 
 HEADERS += \
     admin.h \
@@ -30,14 +31,16 @@ HEADERS += \
     product.h \
     productdialog.h \
     productlistmodel.h \
-    seller.h
+    seller.h \
+    signuppage.h
 
 FORMS += \
     admin.ui \
     buyer.ui \
     digikala.ui \
     productdialog.ui \
-    seller.ui
+    seller.ui \
+    signuppage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

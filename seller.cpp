@@ -1,7 +1,7 @@
 #include "seller.h"
 #include "ui_seller.h"
 
-Seller::Seller(QWidget *parent) :
+Seller::Seller(QWidget *parent, Global::Seller seller) :
     QMainWindow(parent),
     ui(new Ui::Seller)
 {

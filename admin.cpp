@@ -3,7 +3,7 @@
 #include <QPixmap>
 #include <QDebug>
 
-Admin::Admin(QWidget *parent) :
+Admin::Admin(QWidget *parent, Global::Admin adminUser) :
     QMainWindow(parent),
     ui(new Ui::Admin)
 {

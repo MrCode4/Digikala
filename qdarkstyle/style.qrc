@@ -226,5 +226,6 @@
         <file>../images/add.png</file>
         <file>../images/search_product.png</file>
         <file>../images/buy_product.png</file>
+        <file>../images/exit.png</file>
     </qresource>
 </RCC>

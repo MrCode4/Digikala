@@ -10,6 +10,7 @@
 #include "itemlistmodel.h"
 #include "productdialog.h"
 #include "productlistmodel.h"
+#include "globalsettings.h"
 
 namespace Ui {
 class Admin;
@@ -20,7 +21,7 @@ class Admin : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Admin(QWidget *parent = nullptr);
+    explicit Admin(QWidget *parent = nullptr, Global::Admin adminUser = Global::Admin());
     ~Admin();
 
 private slots:

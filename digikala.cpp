@@ -11,18 +11,8 @@ Digikala::Digikala(QWidget *parent)
 {
     ui->setupUi(this);   
 
-    GlobalSettings* global = GlobalSettings::getInstance();
-
     initialize();
 
-    Admin* admin = new Admin();
-    admin->showFullScreen();
-
-    Seller* seller = new Seller();
-    seller->showFullScreen();
-
-    Buyer* buyer = new Buyer();
-    buyer->showFullScreen();
 }
 
 Digikala::~Digikala()
@@ -55,5 +45,90 @@ void Digikala::initialize()
     this->setWindowState(Qt::WindowFullScreen);
 
     setStyleSheet();
+}
+
+
+void Digikala::on_actionExit_triggered()
+{
+    close();
+}
+
+void Digikala::requestLogin()
+{
+    qDebug()<<"vared";
+
+    QList<Global::Admin> adminList = GlobalSettings::getInstance()->getAdmins();
+
+    bool isItExist = false;
+
+    Global::Admin adminUser;
+
+    for(const auto &ad : qAsConst(adminList))
+        if(ad.username == ui->username_lineEdit->text() &&
+           ad.password == ui->passowrd_lineEdit->text())
+        {
+            isItExist = true;
+            adminUser = ad;
+
+            break;
+        }
+
+    if(isItExist)
+    {
+        admin = new Admin(this, adminUser);
+        admin->showFullScreen();
+
+        return;
+    }
+
+    Global::Seller sellerUser;
+    QList<Global::Seller> sellerList = GlobalSettings::getInstance()->getSellers();
+
+    for(const auto &se : qAsConst(sellerList))
+        if(se.username == ui->username_lineEdit->text() &&
+           se.password == ui->passowrd_lineEdit->text())
+        {
+            isItExist = true;
+            sellerUser = se;
+
+            break;
+        }
+
+    if(isItExist)
+    {
+        seller = new Seller(this, sellerUser);
+        seller->showFullScreen();
+
+        return;
+    }
+
+    Global::Buyer buyerUser;
+    QList<Global::Buyer> buyerList = GlobalSettings::getInstance()->getBuyers();
+
+    for(const auto &bu : qAsConst(buyerList))
+        if(bu.username == ui->username_lineEdit->text() &&
+           bu.password == ui->passowrd_lineEdit->text())
+        {
+            isItExist = true;
+            buyerUser = bu;
+
+            break;
+        }
+
+    if(isItExist)
+    {
+        buyer = new Buyer(this, buyerUser);
+        buyer->showFullScreen();
+
+        return;
+    }
+
+    ui->statusBar->showMessage("Invalid Username or Password!",10000);
+
+}
+
+void Digikala::signup()
+{
+
 }
 

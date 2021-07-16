@@ -56,7 +56,6 @@ public:
     {
         if(m_instance == nullptr)
         {
-            qDebug() << "sdfs";
             m_instance = new GlobalSettings();
         }
 

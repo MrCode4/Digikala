@@ -20,9 +20,17 @@ public:
     Digikala(QWidget *parent = nullptr);
     ~Digikala();
 
+private slots:
+    void on_actionExit_triggered();
+    void requestLogin();
+    void signup();
+
 private:
     Ui::Digikala *ui;
     void setStyleSheet();
     void initialize();
+    Admin* admin = nullptr;
+    Buyer* buyer = nullptr;
+    Seller* seller = nullptr;
 };
 #endif // DIGIKALA_H
