@@ -5,6 +5,11 @@
 #include "digikala.h"
 #include "ui_digikala.h"
 
+/*!
+ * \brief Digikala::Digikala
+ * login page
+ * \param parent
+ */
 Digikala::Digikala(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Digikala)
@@ -20,6 +25,10 @@ Digikala::~Digikala()
     delete ui;
 }
 
+/*!
+ * \brief Digikala::setStyleSheet
+ * set style
+ */
 void Digikala::setStyleSheet()
 {
     QFile f(":/qdarkstyle/dark/style.qss");
@@ -37,6 +46,9 @@ void Digikala::setStyleSheet()
 
 }
 
+/*!
+ * \brief Digikala::initialize
+ */
 void Digikala::initialize()
 {
     this->setObjectName("Digikala");
@@ -47,12 +59,19 @@ void Digikala::initialize()
     setStyleSheet();
 }
 
-
+/*!
+ * \brief Digikala::on_actionExit_triggered
+ * when user clicked on exit button
+ */
 void Digikala::on_actionExit_triggered()
 {
     close();
 }
 
+/*!
+ * \brief Digikala::requestLogin
+ * when user clicked on login button
+ */
 void Digikala::requestLogin()
 {
     QList<Global::Admin> adminList = GlobalSettings::getInstance()->getAdmins();
@@ -131,6 +150,10 @@ void Digikala::requestLogin()
 
 }
 
+/*!
+ * \brief Digikala::signUpPageClosed
+ * when user clicked on signup
+ */
 void Digikala::signUpPageClosed()
 {
     this->show();
@@ -142,6 +165,10 @@ void Digikala::signUpPageClosed()
     signUpPage = nullptr;
 }
 
+/*!
+ * \brief Digikala::adminClosed
+ * when admin loggedout
+ */
 void Digikala::adminClosed()
 {
     this->show();
@@ -153,6 +180,10 @@ void Digikala::adminClosed()
     admin = nullptr;
 }
 
+/*!
+ * \brief Digikala::buyerClosed
+ * whem buyer logged out
+ */
 void Digikala::buyerClosed()
 {
     this->show();
@@ -164,6 +195,10 @@ void Digikala::buyerClosed()
     buyer = nullptr;
 }
 
+/*!
+ * \brief Digikala::sellerClosed
+ * when seller logged out
+ */
 void Digikala::sellerClosed()
 {
     this->show();
@@ -175,6 +210,10 @@ void Digikala::sellerClosed()
     seller = nullptr;
 }
 
+/*!
+ * \brief Digikala::signup
+ * when user clicked on signup
+ */
 void Digikala::signup()
 {
     signUpPage = new SignUpPage();

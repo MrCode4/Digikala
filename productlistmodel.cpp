@@ -3,7 +3,7 @@
 
 ProductListModel::ProductListModel(QObject *parent)
     : QAbstractListModel(parent),
-    header{"Product Name", "Price", "Count", "Description", "Rate", "Comments"}
+    header{"Product Name", "Price", "Count", "Description", "Rate", "Comments", "Status"}
 {
 }
 
@@ -62,6 +62,14 @@ QVariant ProductListModel::data(const QModelIndex &index, int role) const
         else if(index.column() == 3)//Description
         {
             return productList[index.row()].getDescription();
+        }
+        else if(index.column() == 4)//rate
+        {
+            return productList[index.row()].getRate();
+        }
+        else if(index.column() == 5)//status
+        {
+            return "Accepted";
         }
     }
 

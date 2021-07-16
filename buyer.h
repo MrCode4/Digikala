@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "globalsettings.h"
+#include "productlistmodel.h"
 
 namespace Ui {
 class Buyer;
@@ -24,6 +25,7 @@ signals:
 
 private:
     Ui::Buyer *ui;
+    ProductListModel* productListModel;
 };
 
 #endif // BUYER_H

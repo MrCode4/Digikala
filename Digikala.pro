@@ -19,6 +19,7 @@ SOURCES += \
     digikala.cpp \
     productdialog.cpp \
     productlistmodel.cpp \
+    profiledialog.cpp \
     seller.cpp \
     signuppage.cpp
 
@@ -31,6 +32,7 @@ HEADERS += \
     product.h \
     productdialog.h \
     productlistmodel.h \
+    profiledialog.h \
     seller.h \
     signuppage.h
 
@@ -39,6 +41,7 @@ FORMS += \
     buyer.ui \
     digikala.ui \
     productdialog.ui \
+    profiledialog.ui \
     seller.ui \
     signuppage.ui
 
