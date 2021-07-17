@@ -15,6 +15,8 @@ Seller::Seller(QWidget *parent, Global::Seller sellerUser) :
 
     current_sellerUser = sellerUser;
 
+    ui->actionWallet->setText("Wallet: " + QString::number(sellerUser.wallet) + "Rial");
+
     productListModel = new ProductListModel(this);
 
     ui->product_tableView->setModel(productListModel);

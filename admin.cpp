@@ -209,3 +209,9 @@ void Admin::on_pushButton_clicked()
     productListModel->addProduct(p6);
 }
 
+
+void Admin::on_pushButton_2_clicked()
+{
+    ui->statusbar->showMessage("No product selected!",10000);
+}
+

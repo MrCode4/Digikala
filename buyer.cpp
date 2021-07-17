@@ -14,6 +14,10 @@ Buyer::Buyer(QWidget *parent, Global::Buyer current_buyerUser) :
 {
     ui->setupUi(this);
 
+    this->current_buyerUser = current_buyerUser;
+
+    ui->actionWallet->setText("Wallet: " + QString::number(current_buyerUser.wallet) + "Rial");
+
     productListModel = new ProductListModel(this);
 
     ui->product_tableView->setModel(productListModel);
@@ -35,5 +39,11 @@ void Buyer::on_actionProfile_triggered()
     profileDialog = new ProfileDialog(this, current_buyerUser.username, current_buyerUser.password);
 
     profileDialog->exec();
+}
+
+
+void Buyer::on_pushButton_5_clicked()
+{
+    ui->statusbar->showMessage("No Product exist!",10000);
 }
 

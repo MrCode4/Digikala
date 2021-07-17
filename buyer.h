@@ -23,6 +23,8 @@ private slots:
 
     void on_actionProfile_triggered();
 
+    void on_pushButton_5_clicked();
+
 signals:
     void closed();
 
