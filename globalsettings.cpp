@@ -11,17 +11,104 @@ Q_DECLARE_METATYPE(QList<Global::Discount>)
 Q_DECLARE_METATYPE(Global::Discount)
 Q_DECLARE_METATYPE(QList<Product>)
 
+QDataStream& operator<<(QDataStream& out, const Product& product)
+{
+    out << product.getComments() << QString::number(product.getCount()) << product.getDescription()
+    << product.getName() << QString::number(product.getPrice()) << QString::number(product.getRate()) << QString::number((int)product.getStatus());
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in, Product& product)
+{
+    QString comments;
+    QString count;
+    QString description;
+    QString name;
+    QString price;
+    QString rate;
+    QString status;
+
+    in >> comments;
+    in >> count;
+    in >> description;
+    in >> name;
+    in >> price;
+    in >> rate;
+    in >> status;
+
+    product.setComments(comments);
+    product.setCount(count.toUInt());
+    product.setDescription(description);
+    product.setName(name);
+    product.setPrice(price.toInt());
+    product.setRate(rate.toDouble());
+    product.setStatus((Product::Status)status.toInt());
+
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out, const QList<Product>& productList)
+{
+    for(const auto &product : productList)
+        out << product;
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in, QList<Product>& productList)
+{
+    while(!in.atEnd())
+    {
+        Product product;
+
+        in >> product;
+
+        productList.append(product);
+    }
+
+    return in;
+}
+
 QDataStream& operator<<(QDataStream& out, const Global::Discount& discount)
 {
-    out << discount.amount << discount.id;
+    out << QString::number(discount.amount) << QString::number(discount.id);
 
     return out;
 }
 
 QDataStream& operator>>(QDataStream& in, Global::Discount& discount)
 {
-    in >> discount.amount;
-    in >> discount.id;
+    QString strAmount;
+    QString strId;
+
+    in >> strAmount;
+    in >> strId;
+
+    discount.amount = strAmount.toInt();
+    discount.id = strId.toInt();
+
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out, const QList<Global::Discount>& discountList)
+{
+    for(const auto &discount : discountList)
+        out << discount;
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in, QList<Global::Discount>& discountList)
+{
+    while(!in.atEnd())
+    {
+        Global::Discount discount;
+
+        in >> discount;
+
+        discountList.append(discount);
+    }
 
     return in;
 }
@@ -41,79 +128,120 @@ QDataStream& operator>>(QDataStream& in, Global::Admin& admin)
     return in;
 }
 
+QDataStream& operator<<(QDataStream& out, const QList<Global::Admin>& adminList)
+{
+    for(const Global::Admin &admin : adminList)
+        out << admin;
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in, QList<Global::Admin>& adminList)
+{
+    while(!in.atEnd())
+    {
+        Global::Admin admin;
+
+        in >> admin;
+
+        adminList.append(admin);
+    }
+
+    return in;
+}
+
 QDataStream& operator<<(QDataStream& out, const Global::Seller& seller)
 {
-    out << seller.name << seller.username << seller.password;
-    out << seller.products << seller.telephone << seller.wallet;
+    out << seller.name << seller.username << seller.password
+    << seller.products << seller.telephone << QString::number(seller.wallet);
 
     return out;
 }
 
 QDataStream& operator>>(QDataStream& in, Global::Seller& seller)
 {
+    QString strWallet;
+
     in >> seller.name;
     in >> seller.username;
     in >> seller.password;
     in >> seller.products;
     in >> seller.telephone;
-    in >> seller.wallet;
+    in >> strWallet;
+
+    seller.wallet = strWallet.toInt();
+//qDebug()<<seller.username;
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out, const QList<Global::Seller>& sellerList)
+{
+    qDebug() << "seller list" << sellerList.size();
+
+    for(const auto &seller : sellerList)
+        out << seller;
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in, QList<Global::Seller>& sellerList)
+{
+    while(!in.atEnd())
+    {
+        Global::Seller seller;
+
+        in >> seller;
+
+        qDebug() << seller.username;
+
+        sellerList.append(seller);
+    }
 
     return in;
 }
 
 QDataStream& operator<<(QDataStream& out, const Global::Buyer& buyer)
 {
-    out << buyer.username << buyer.password << buyer.address;
-    out << buyer.orders << buyer.telephone << buyer.wallet;
+    out << buyer.username << buyer.password << buyer.address
+    << buyer.orders << buyer.telephone << QString::number(buyer.wallet);
 
     return out;
 }
 
 QDataStream& operator>>(QDataStream& in, Global::Buyer& buyer)
 {
+    QString strWallet;
+
     in >> buyer.username;
     in >> buyer.password;
     in >> buyer.address;
     in >> buyer.orders;
     in >> buyer.telephone;
-    in >> buyer.wallet;
+    in >> strWallet;
+
+    buyer.wallet = strWallet.toInt();
 
     return in;
 }
 
-QDataStream& operator<<(QDataStream& out, const Product& product)
+QDataStream& operator<<(QDataStream& out, const QList<Global::Buyer>& buyerList)
 {
-    out << product.getComments() << product.getCount() << product.getDescription();
-    out << product.getName() << product.getPrice() << product.getRate() << (int)product.getStatus();
+    for(const auto &buyer : buyerList)
+        out << buyer;
 
     return out;
 }
 
-QDataStream& operator>>(QDataStream& in, Product& product)
+QDataStream& operator>>(QDataStream& in, QList<Global::Buyer>& buyerList)
 {
-    QString comments;
-    int count;
-    QString description;
-    QString name;
-    int price;
-    double rate;
-    int status;
+    while(!in.atEnd())
+    {
+        Global::Buyer buyer;
 
-    in >> comments;
-    in >> count;
-    in >> description;
-    in >> name;
-    in >> price;
-    in >> rate;
-    in >> status;
+        in >> buyer;
 
-    product.setComments(comments);
-    product.setCount(count);
-    product.setDescription(description);
-    product.setName(name);
-    product.setPrice(price);
-    product.setRate(rate);
-    product.setStatus((Product::Status)status);
+        buyerList.append(buyer);
+    }
 
     return in;
 }
@@ -121,12 +249,9 @@ QDataStream& operator>>(QDataStream& in, Product& product)
 
 GlobalSettings::GlobalSettings(QObject *parent) : QObject(parent)
 {
-    settings = new QSettings("MySoft", "Star Runner");
+    settings = new QSettings("DigikalaSoft", "DigikalaCompany");
 
     qRegisterMethod();
-
-
-    //settings->value("discount_list").value<QList<Global::Discount> >();
 
 }
 
@@ -212,5 +337,3 @@ void GlobalSettings::addAdmin(const Global::Admin &admin)
 
     settings->setValue("admin_list", QVariant::fromValue(list));
 }
-
-
