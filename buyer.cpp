@@ -8,7 +8,7 @@
  * \param buyer
  *
  */
-Buyer::Buyer(QWidget *parent, Global::Buyer buyer) :
+Buyer::Buyer(QWidget *parent, Global::Buyer current_buyerUser) :
     QMainWindow(parent),
     ui(new Ui::Buyer)
 {
@@ -27,5 +27,13 @@ Buyer::~Buyer()
 void Buyer::on_actionLogout_triggered()
 {
     emit closed();
+}
+
+
+void Buyer::on_actionProfile_triggered()
+{
+    profileDialog = new ProfileDialog(this, current_buyerUser.username, current_buyerUser.password);
+
+    profileDialog->exec();
 }
 

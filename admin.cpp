@@ -9,6 +9,8 @@ Admin::Admin(QWidget *parent, Global::Admin adminUser) :
 {
     ui->setupUi(this);
 
+    current_adminUser = adminUser;
+
     submiting_list.submitingListModel = new ItemListModel(this);
     canceling_list.cancelingListModel = new ItemListModel(this);
     buying_list.buyingListModel = new ItemListModel(this);
@@ -189,5 +191,21 @@ Admin::~Admin()
 void Admin::on_actionLogout_triggered()
 {
     emit closed();
+}
+
+
+void Admin::on_actionProfile_triggered()
+{
+    profileDialog = new ProfileDialog(this, current_adminUser.username, current_adminUser.password);
+
+    profileDialog->show();
+}
+
+
+void Admin::on_pushButton_clicked()
+{
+    p6.setName("Hosain");
+
+    productListModel->addProduct(p6);
 }
 

@@ -11,6 +11,7 @@
 #include "productdialog.h"
 #include "productlistmodel.h"
 #include "globalsettings.h"
+#include "profiledialog.h"
 
 namespace Ui {
 class Admin;
@@ -26,6 +27,10 @@ public:
 
 private slots:
     void on_actionLogout_triggered();
+
+    void on_actionProfile_triggered();
+
+    void on_pushButton_clicked();
 
 signals:
     void closed();
@@ -65,6 +70,10 @@ private:
     ProductDialog* productDialog  = nullptr;
 
     ProductListModel* productListModel;
+
+    ProfileDialog* profileDialog = nullptr;
+
+    Global::Admin current_adminUser;
 
     void add_new_submiting_product(Product& product);
     void add_new_canceling_product(Product& product);

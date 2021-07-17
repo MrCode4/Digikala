@@ -12,7 +12,7 @@ class ProfileDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ProfileDialog(QWidget *parent = nullptr);
+    explicit ProfileDialog(QWidget *parent = nullptr, QString username = "", QString password = "");
     ~ProfileDialog();
 
 private:
