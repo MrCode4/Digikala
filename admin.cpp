@@ -201,17 +201,14 @@ void Admin::on_actionProfile_triggered()
     profileDialog->show();
 }
 
-
-void Admin::on_pushButton_clicked()
+void Admin::on_add_btn_clicked()
 {
-    p6.setName("Hosain");
 
-    productListModel->addProduct(p6);
 }
 
 
-void Admin::on_pushButton_2_clicked()
+void Admin::on_delete_btn_clicked()
 {
-    ui->statusbar->showMessage("No product selected!",10000);
+
 }
 
