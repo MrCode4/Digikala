@@ -42,8 +42,4 @@ void Buyer::on_actionProfile_triggered()
 }
 
 
-void Buyer::on_pushButton_5_clicked()
-{
-    ui->statusbar->showMessage("No Product exist!",10000);
-}
 

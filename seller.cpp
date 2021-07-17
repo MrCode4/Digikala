@@ -40,3 +40,31 @@ void Seller::on_actionProfile_triggered()
     profileDialog->exec();
 }
 
+void Seller::addProduct(Product product)
+{
+    productListModel->addProduct(product);
+
+    closeProductDialog();
+}
+
+void Seller::closeProductDialog()
+{
+    productDialog->close();
+
+    delete productDialog;
+
+    productDialog = nullptr;
+}
+
+
+void Seller::on_add_btn_clicked()
+{
+    productDialog = new ProductDialog(this, "add");
+
+    connect(productDialog,SIGNAL(closed), this, SLOT(closeProductDialog()));
+
+    connect(productDialog, SIGNAL(added(Product)), this, SLOT(addProduct(Product)));
+
+    productDialog->exec();
+}
+

@@ -170,14 +170,12 @@ QDataStream& operator>>(QDataStream& in, Global::Seller& seller)
     in >> strWallet;
 
     seller.wallet = strWallet.toInt();
-//qDebug()<<seller.username;
+
     return in;
 }
 
 QDataStream& operator<<(QDataStream& out, const QList<Global::Seller>& sellerList)
 {
-    qDebug() << "seller list" << sellerList.size();
-
     for(const auto &seller : sellerList)
         out << seller;
 
@@ -191,8 +189,6 @@ QDataStream& operator>>(QDataStream& in, QList<Global::Seller>& sellerList)
         Global::Seller seller;
 
         in >> seller;
-
-        qDebug() << seller.username;
 
         sellerList.append(seller);
     }

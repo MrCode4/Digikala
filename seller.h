@@ -5,6 +5,7 @@
 #include "globalsettings.h"
 #include "productlistmodel.h"
 #include "profiledialog.h"
+#include "productdialog.h"
 
 namespace Ui {
 class Seller;
@@ -23,6 +24,12 @@ private slots:
 
     void on_actionProfile_triggered();
 
+    void on_add_btn_clicked();
+
+    void addProduct(Product product);
+
+    void closeProductDialog();
+
 signals:
     void closed();
 
@@ -31,6 +38,7 @@ private:
     ProductListModel* productListModel;
     Global::Seller current_sellerUser;
     ProfileDialog* profileDialog = nullptr;
+    ProductDialog* productDialog = nullptr;
 };
 
 #endif // SELLER_H

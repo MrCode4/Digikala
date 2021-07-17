@@ -34,6 +34,10 @@ private slots:
 
     void on_delete_btn_clicked();
 
+    void closeProductDialog();
+
+    void addProduct(Product product);
+
 signals:
     void closed();
 

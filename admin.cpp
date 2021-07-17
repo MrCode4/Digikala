@@ -45,8 +45,7 @@ Admin::Admin(QWidget *parent, Global::Admin adminUser) :
 
 void Admin::show_productDialog(const Product& product)
 {
-    if(productDialog == nullptr)
-        productDialog = new ProductDialog(this);
+    productDialog = new ProductDialog(this,"read_only");
 
     productDialog->insert_information(product);
 
@@ -203,12 +202,33 @@ void Admin::on_actionProfile_triggered()
 
 void Admin::on_add_btn_clicked()
 {
+    productDialog = new ProductDialog(this, "add");
 
+    connect(productDialog, SIGNAL(closed()), this, SLOT(closeProductDialog()));
+
+    connect(productDialog, SIGNAL(added(Product)), this, SLOT(addProduct(Product)));
+
+    productDialog->exec();
 }
 
+void Admin::addProduct(Product product)
+{
+    productListModel->addProduct(product);
+
+    closeProductDialog();
+}
+
+void Admin::closeProductDialog()
+{
+    productDialog->close();
+
+    delete productDialog;
+
+    productDialog = nullptr;
+}
 
 void Admin::on_delete_btn_clicked()
 {
-
+    ui->statusbar->showMessage("No Item selected",10000);
 }
 

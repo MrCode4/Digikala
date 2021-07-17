@@ -80,11 +80,8 @@ void Digikala::requestLogin()
 
     Global::Admin adminUser;
 
-    qDebug() << adminList.size() ;
-
     for(const auto &ad : qAsConst(adminList))
     {
-        qDebug() << ad.username << ad.password;
         if(ad.username == ui->username_lineEdit->text() &&
            ad.password == ui->passowrd_lineEdit->text())
         {
